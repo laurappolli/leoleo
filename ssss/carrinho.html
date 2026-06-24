@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho</title>
+</head>
+<body>
+
+    <h1>Carrinho</h1>
+
+    <div id="lista"></div>
+
+    <h2 id="total"></h2>
+
+    <button onclick="limparCarrinho()">
+        Limpar Carrinho
+    </button>
+
+    <br><br>
+
+    <a href="inicio.html">
+        <button>Voltar para Loja</button>
+    </a>
+
+    <script>
+    let carrinho = localStorage.getItem("carrinho");
+
+    if(carrinho == null){
+            carrinho = [];
+    }
+    else{
+    carrinho = JSON.parse(carrinho);
+    }
+
+    let texto = "";
+    let soma = 0;
+
+    for(let i = 0; i < carrinho.length; i++){
+
+    texto = texto +
+    "<p>" +
+    carrinho[i].nome +
+    " - R$ " +
+    carrinho[i].preco +
+    "</p>";
+
+soma = soma + carrinho[i].preco;
+        }
+
+        document.getElementById("lista").innerHTML = texto;
+        document.getElementById("total").innerHTML =
+        "Total: R$ " + soma;
+
+
+        function limparCarrinho(){
+            localStorage.removeItem("carrinho");
+            location.reload();
+        }
+
+    </script>
+
+</body>
+</html>

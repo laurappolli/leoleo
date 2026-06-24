@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Beef & Meat</title>
+    <link rel="stylesheet" href="css/inicio.css">
+</head>
+
+<body>
+<header>
+    <h1>Beef & Meat!</h1>
+    <a href="carrinho.html">
+        <button>Ver carrinho</button>
+    </a>
+        
+</header>
+<br>
+
+    <div class="jacare">
+        <img src="fotho/jacare.png">
+        <h3>Carne de Jacaré</h3>
+        <p>R$ 199</p>
+        <button onclick="adicionar('Carne de Jacaré', 199)">
+            Adicionar ao Carrinho
+        </button>
+        <a href="produto.html">
+    <button>Informações</button>
+    </a>
+    </div>
+
+    <div class="jacare">
+        <img src="fotho/javali.jpg">
+        <h3>Carne de Javali</h3>
+        <p>R$ 130</p>
+        <button onclick="adicionar('Carne de Javali', 130)">
+            Adicionar ao Carrinho
+        </button>
+    <a href="produto.html">
+    <button>Informações</button>
+    </a>
+    </div>
+
+
+    <div class="jacare">
+        <img src="fotho/sapo.webp">
+        <h3>Carne de Sapo</h3>
+        <p>R$ 80</p>
+        <button onclick="adicionar('Carne de Sapo', 80)">
+            Adicionar ao Carrinho
+        </button>
+    <a href="produto.html">
+    <button>Informações</button>
+    </a>
+    </div>
+
+    
+
+    <script>
+
+        function adicionar(nome, preco){
+
+            let carrinho = localStorage.getItem("carrinho");
+
+            if(carrinho == null){
+                carrinho = [];
+            }
+            else{
+                carrinho = JSON.parse(carrinho);
+            }
+
+            carrinho[carrinho.length] = {
+                nome: nome,
+                preco: preco
+            };
+            localStorage.setItem(
+                "carrinho",
+                JSON.stringify(carrinho)
+            );
+
+            alert("Produto adicionado!");
+        }
+
+    </script>
+
+</body>
+</html>
